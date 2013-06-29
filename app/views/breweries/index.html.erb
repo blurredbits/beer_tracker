@@ -1,0 +1,11 @@
+<h1>Breweries</h1>
+
+<% if @breweries %>
+  <ul>
+    <% @breweries.each do |brewery| %>
+      <li><%= brewery.name %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Sorry. No breweries loaded yet.</p>
+<% end %>
