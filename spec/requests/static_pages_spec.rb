@@ -7,4 +7,12 @@ describe "StaticPages" do
       page.should have_content('Beer Tracker')
     end
   end
+
+  describe "About Page" do
+    it "should have the content About" do
+      visit '/static_pages/about'
+      page.should have_content('About')
+    end
+  end
+
 end
