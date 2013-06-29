@@ -3,7 +3,7 @@
 <% if @breweries %>
   <ul>
     <% @breweries.each do |brewery| %>
-      <li><%= brewery.name %></li>
+      <li><%= brewery.name %>|<%= link_to 'Delete', brewery, method: :delete %></li>
     <% end %>
   </ul>
 <% else %>

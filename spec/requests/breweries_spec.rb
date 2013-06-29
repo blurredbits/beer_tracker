@@ -8,6 +8,12 @@ describe "Breweries" do
       page.should have_content('New Belgium')
     end
 
+    it "should display a link to delete a brewery" do
+      FactoryGirl.create(:brewery)
+      visit breweries_path
+      page.should have_link('Delete')
+    end
+
     it "should display add brewery button" do
       visit breweries_path
       find_link('Add Brewery')
@@ -26,7 +32,7 @@ describe "Breweries" do
       page.should have_field('brewery[name]')
     end
 
-    it "should display a add brewery button" do
+    it "should display an add brewery button" do
       visit new_brewery_path
       find_button('Add Brewery')
     end
@@ -37,6 +43,17 @@ describe "Breweries" do
       click_button('Add Brewery')
       expect(page).to have_content('New Belgium')
     end
-
   end
+
+  describe "destroy" do
+    it "should delete the brewery from the list of breweries" do
+      visit new_brewery_path
+      fill_in("Name", with: "New Belgium")
+      click_button('Add Brewery')
+      expect(page).to have_content('New Belgium')
+      click_link('Delete')
+      expect(page).to have_no_content('New Belgium')
+    end
+  end
+
 end

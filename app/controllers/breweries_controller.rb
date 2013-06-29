@@ -20,4 +20,10 @@ class BreweriesController < ApplicationController
     end
   end
 
+  def destroy
+    brewery = Brewery.find_by_id(params[:id])
+    brewery.destroy
+    redirect_to breweries_path
+  end
+
 end
