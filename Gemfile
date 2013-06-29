@@ -6,7 +6,9 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'rspec-rails'
+group :development, :test do
+  gem 'rspec-rails'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -21,7 +23,9 @@ group :assets do
   gem 'zurb-foundation'
 end
 
-group :test, :development do
+
+
+group :test do
   gem 'capybara'
 end
 
