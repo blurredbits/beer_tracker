@@ -1,0 +1,7 @@
+<h1>New Brewery</h1>
+
+<%= form_for @brewery do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit('Add Brewery') %>
+<% end %>
