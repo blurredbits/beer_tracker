@@ -1,9 +1,11 @@
 TestApp::Application.routes.draw do
 
+  resources :breweries
+
   get "static_pages/home"
   get "static_pages/about"
 
-  resources :breweries
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

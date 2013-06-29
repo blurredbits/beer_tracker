@@ -14,6 +14,12 @@ describe "Breweries" do
       page.should have_link('Delete')
     end
 
+    it "should display a link to edit a brewery" do
+      FactoryGirl.create(:brewery)
+      visit breweries_path
+      page.should have_link('Edit')
+    end
+
     it "should display add brewery button" do
       visit breweries_path
       find_link('Add Brewery')
@@ -24,6 +30,13 @@ describe "Breweries" do
       click_link('Add Brewery')
       expect(page).to have_content('New Brewery')
     end
+
+    it "should display a link to show a brewery" do
+      FactoryGirl.create(:brewery)
+      visit breweries_path
+      page.should have_link('Show')
+    end
+
   end
 
   describe "new page" do
@@ -53,6 +66,33 @@ describe "Breweries" do
       expect(page).to have_content('New Belgium')
       click_link('Delete')
       expect(page).to have_no_content('New Belgium')
+    end
+  end
+
+  describe "edit" do
+    it "should display a brewery edit form" do
+      FactoryGirl.create(:brewery)
+      visit breweries_path
+      click_link('Edit')
+      page.should have_field('brewery[name]')
+    end
+
+    it "should update the brewery name" do
+      FactoryGirl.create(:brewery)
+      visit breweries_path
+      click_link('Edit')
+      fill_in("Name", with: 'Pateros Creek')
+      click_button('Update')
+      expect(page).to have_no_content('New Belgium')
+    end
+  end
+
+  describe "show" do
+    it "should display a brewery profile" do
+      FactoryGirl.create(:brewery)
+      visit breweries_path
+      click_link('Show')
+      expect(page).to have_content('New Belgium')
     end
   end
 

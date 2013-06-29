@@ -1,12 +1,15 @@
 <h1>Breweries</h1>
 
-<% if @breweries %>
-  <ul>
+<table>
+  <tbody>
     <% @breweries.each do |brewery| %>
-      <li><%= brewery.name %>|<%= link_to 'Delete', brewery, method: :delete %></li>
+      <tr>
+        <td><%= brewery.name %></td>
+        <td><%= link_to 'Show', brewery %></td>
+        <td><%= link_to 'Edit', edit_brewery_path(brewery) %></td>
+        <td><%= link_to 'Delete', brewery, method: :delete %></td>
+      </tr>
     <% end %>
-  </ul>
-<% else %>
-  <p>Sorry. No breweries loaded yet.</p>
-<% end %>
+  </tbody>
+</table>
 <p><%= link_to "Add Brewery", new_brewery_path %></p>

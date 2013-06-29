@@ -1,0 +1,7 @@
+<h1>On the Brewery Edit Page</h1>
+
+<%= form_for @brewery do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.submit 'Update' %>
+<% end %>

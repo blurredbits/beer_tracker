@@ -5,6 +5,7 @@ class BreweriesController < ApplicationController
   end
 
   def show
+    @brewery = Brewery.find(params[:id])
   end
 
   def new
@@ -21,9 +22,23 @@ class BreweriesController < ApplicationController
   end
 
   def destroy
-    brewery = Brewery.find_by_id(params[:id])
+    brewery = Brewery.find(params[:id])
     brewery.destroy
     redirect_to breweries_path
+  end
+
+  def edit
+    @brewery = Brewery.find(params[:id])
+  end
+
+  def update
+    @brewery = Brewery.find(params[:id])
+
+    if @brewery.update_attributes(params[:brewery])
+      redirect_to breweries_path
+    else
+      render :edit
+    end
   end
 
 end
