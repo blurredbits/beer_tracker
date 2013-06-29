@@ -21,6 +21,10 @@ group :assets do
   gem 'zurb-foundation'
 end
 
+group :test, :development do
+  gem 'capybara'
+end
+
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
